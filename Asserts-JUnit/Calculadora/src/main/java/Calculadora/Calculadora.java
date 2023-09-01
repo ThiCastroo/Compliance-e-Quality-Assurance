@@ -18,4 +18,19 @@ public class Calculadora {
 		return a / b;
 	}
 
+	public float mediaComDoisNumeros(int a, int b) {
+		return (a + b) / 2;
+	}
+
+	public float media(int[] numeros) {
+		
+		float soma = 0;
+		
+		for (int numero : numeros) {
+			soma += numero;
+		}
+		
+		return soma / numeros.length;
+	}
+
 }

@@ -79,4 +79,25 @@ public class CalculadoraTeste {
 		assertThrows(ArithmeticException.class, () -> calc.dividir(a, b));
 	}
 	
+	
+	@Test 
+	void testeMediaEntreDoisNumeros() {
+		
+		int a = 10;
+		int b = 2;
+		
+		float resultado = calc.mediaComDoisNumeros(a, b);
+		
+		assertEquals((a+b)/2, resultado);
+	}
+	
+	@Test
+	void testeMedia() {
+		
+		int[] numeros = {10, 5, 6, 6, 3};
+		
+		float resultado = calc.media(numeros);
+		
+		assertEquals(30f/5f, resultado);
+	}
 }
