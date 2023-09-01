@@ -1,4 +1,6 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +17,7 @@ public class CalculadoraTeste {
 	}
 	
 	@Test
-	void testSomar() {
+	void testeSomar() {
 		
 		int a = 3;
 		int b = 2;
@@ -25,9 +27,7 @@ public class CalculadoraTeste {
 	}
 
 	@Test
-	void testSubtrair() {
-		
-		//Calculadora calc = new Calculadora();
+	void testeSubtrair() {
 		
 		int a = 3;
 		int b = 2;
@@ -37,9 +37,7 @@ public class CalculadoraTeste {
 	}
 	
 	@Test
-	void testMultiplicar() {
-		
-		//Calculadora calc = new Calculadora();
+	void testeMultiplicar() {
 		
 		int a = 3;
 		int b = 2;
@@ -49,15 +47,36 @@ public class CalculadoraTeste {
 	}
 	
 	@Test
-	void testDividir() {
-		
-		//Calculadora calc = new Calculadora();
+	void testeDividir() {
 		
 		int a = 3;
 		int b = 2;
 		int resultado = calc.dividir(a, b);
 		
 		assertEquals(a/b, resultado);
+	}
+	
+	@Test
+	void testeDeveRetornarExceptionQuandoDividePorZero() {
+		
+		int a = 5;
+		int b = 0;
+		
+		try {
+			calc.dividir(a, b);
+			fail("Teste Falhou: Não retornou a Exception!");
+		} catch (Exception e) {
+			assertEquals(ArithmeticException.class, e.getClass());
+		}	
+	}
+	
+	@Test
+	void testeDeveRetornarExceptionUsandoLambda() {
+		
+		int a = 5;
+		int b = 0;
+		
+		assertThrows(ArithmeticException.class, () -> calc.dividir(a, b));
 	}
 	
 }
